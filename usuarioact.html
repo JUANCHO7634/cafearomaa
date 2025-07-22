@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Actualizar Usuario</title>
+  <link rel="stylesheet" href="tasa.css" />
+
+
+</head>
+<body>
+  <header>
+  <div class="logo">
+    <img src="aroma.png" alt="Logo Café Aroma">
+     <h1>CAFETERIA AROMA</h1>
+  </div>
+ 
+  <nav>
+    <ul>
+        <li><a href="inicio.html">INICIO</a></li> 
+      <li><a href="registro.html">REGISTRATE</a></li>
+      <li><a href="Alimentosinicio.html">MENU</a></li>
+     
+    </ul>
+  </nav>
+
+
+</head>
+<body>
+  <div class="form-wrapper">
+
+    <div class="form-container12">
+      <h2>☕ ACTUALIZA TUS DATOS</h2>
+      <form id="form1" name="form1" method="POST" action="actualizar_usuario.php">
+
+        <div class="form-group">
+          <input type="number" name="id_usuario" placeholder="Número de usuario (No editable)" >
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+        </div>
+
+        <div class="form-group">
+          <input type="email" name="correo" placeholder="Correo electrónico" required>
+        </div>
+
+        <div class="form-group">
+          <input type="tel" name="telefono" placeholder="Número de teléfono" required>
+        </div>
+
+        <div class="form-group">
+          <input type="password" name="contrasena" placeholder="Nueva Contraseña" required>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Actualizar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <footer>
+  <div class="footer-contenido">
+    <div class="footer-texto">
+      <p>Todos los derechos reservados</p>
+      <p>@cafeteriaaroma</p>
+      <p>Jonathan Jatsbany Nicolás Arzate<br>Juan Carlos Esquivel Rojas</p>
+    </div>
+
+    <div class="redes">
+  <a href="https://wa.me/5210000000000" target="_blank">
+    <img src="piewatsap.jpg" alt="WhatsApp" class="img-footer">
+  </a>
+  <a href="https://www.facebook.com/share/1Ami3KjsKd/" target="_blank">
+    <img src="face.jpg" alt="Facebook" class="img-footer">
+  </a>
+  <a href="https://www.instagram.com/nicolas_j07j?igsh=MWQ2M3p6eHBwMHdsNQ%3D%3D&utm_source=qr" target="_blank">
+    <img src="instas.jpg" alt="Instagram" class="img-footer">
+  </a>
+</div>
+</footer>
+
+
+
+</body>
+</html>

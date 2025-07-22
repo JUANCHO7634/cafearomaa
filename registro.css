@@ -1,0 +1,76 @@
+
+.form-container {
+  background-color: #4e342e;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  width: 350px;
+  color: #fff;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #fce4c5;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #6d4c41;
+  color: #fff;
+  font-size: 16px;
+}
+
+.form-group input::placeholder {
+  color: #d7ccc8;
+}
+
+.btn-register {
+  background-color: #8bc34a;
+  color: #fff;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-return {
+  background-color: #8bc34a;
+  color: #fff;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-register:hover {
+  background-color: #7cb342;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #c8bcb0;
+}
+
+.login-link a {
+  color: #a5d6a7;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
