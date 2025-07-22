@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafetería Aroma</title>
+  <link rel="stylesheet" href="tasa.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="aroma.png" alt="Logo Café Aroma">
+      <h1>CAFETERIA AROMA</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">INICIO</a></li> 
+        <li><a href="historia.html">CONÓCENOS</a></li>
+        <li><a href="Alimentos.html">MENÚ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="info-box3">
+    <div class="galeria-horizontal"></div>
+
+    <div class="productos-container">
+      <h2>Nuestros Productos</h2>
+
+      <!-- CAFÉS -->
+      <div class="categoria-productos">
+        <h3>☕ Cafés Especiales</h3>
+        <div class="galeria-horizontal">
+          <div class="producto">
+            <img src="cap.png" alt="Capuchino">
+            <p>Capuchino - $45</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="cafe-expreso-casero.jpg" alt="Espresso">
+            <p>Espresso - $40</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="latte.png" alt="Latte">
+            <p>Latte - $48</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="americano.png" alt="Americano">
+            <p>Americano - $38</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="MOKKAAA.PNG" alt="Moka">
+            <p>Moka - $50</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="machi.png" alt="Macchiato">
+            <p>Macchiato - $42</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="FLAT.PNG" alt="Flat White">
+            <p>Flat White - $47</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="COLD.PNG" alt="Cold Brew">
+            <p>Cold Brew - $55</p>
+            <button>Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANES -->
+      <div class="categoria-productos">
+        <h3>🥐 Panes Exclusivos</h3>
+        <div class="galeria-horizontal">
+          <div class="producto">
+            <img src="PANCAN.PNG" alt="Pan de canela">
+            <p>Pan de canela - $30</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="PANNUEZ.PNG" alt="Pan de nuez">
+            <p>Pan de nuez - $35</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="PANELOTE.PNG" alt="Pan artesanal">
+            <p>Pan artesanal - $28</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="PANCHOCOOO.PNG" alt="Pan de chocolate">
+            <p>Pan de chocolate - $33</p>
+            <button>Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- POSTRES -->
+      <div class="categoria-productos">
+        <h3>🍰 Postres Caseros</h3>
+        <div class="galeria-horizontal">
+          <div class="producto">
+            <img src="CHES.PNG" alt="Cheesecake">
+            <p>Cheesecake - $45</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="BRAWNIE.PNG" alt="Brownie">
+            <p>Brownie - $40</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="TIRASUMU.PNG" alt="Tiramisú">
+            <p>Tiramisú - $50</p>
+            <button>Agregar al carrito</button>
+          </div>
+          <div class="producto">
+            <img src="RED.PNG" alt="Red Velvet">
+            <p>Red Velvet - $52</p>
+            <button>Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- CARRITO DE COMPRAS -->
+<div id="carrito" style="padding: 20px; background-color: #fffaf0; color: #333;">
+  <h2>🛒 Carrito de Compras</h2>
+  <ul id="lista-carrito"></ul>
+  <p><strong>Total de productos:</strong> <span id="total-items">0</span></p>
+  <p><strong>Total a pagar:</strong> $<span id="total-precio">0</span></p>
+  <p><strong>ID de compra:</strong> <span id="id-compra">N/A</span></p>
+  <p><strong>Fecha del pedido:</strong> <span id="fecha-pedido">N/A</span></p>
+  <button id="comprar-btn">Comprar</button>
+</div>
+
+
+<script>
+  const botones = document.querySelectorAll('.producto button');
+  const listaCarrito = document.getElementById('lista-carrito');
+  const totalItems = document.getElementById('total-items');
+  const totalPrecio = document.getElementById('total-precio');
+  const idCompra = document.getElementById('id-compra');
+  const fechaPedido = document.getElementById('fecha-pedido');
+  const btnComprar = document.getElementById('comprar-btn');
+
+  let carrito = {};
+
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const contenedor = boton.parentElement;
+      const nombre = contenedor.querySelector('p').textContent.split(' - ')[0];
+      const precio = parseFloat(contenedor.querySelector('p').textContent.split('$')[1]);
+
+      if (carrito[nombre]) {
+        carrito[nombre].cantidad += 1;
+        carrito[nombre].subtotal += precio;
+      } else {
+        carrito[nombre] = {
+          precio: precio,
+          cantidad: 1,
+          subtotal: precio
+        };
+      }
+
+      actualizarCarrito();
+    });
+  });
+
+  function generarIdCompra() {
+    // Genera un ID tipo: CMP202507181029
+    const now = new Date();
+    return 'CMP' + now.getFullYear().toString() +
+           (now.getMonth()+1).toString().padStart(2, '0') +
+           now.getDate().toString().padStart(2, '0') +
+           now.getHours().toString().padStart(2, '0') +
+           now.getMinutes().toString().padStart(2, '0');
+  }
+
+  function obtenerFechaActual() {
+    const fecha = new Date();
+    return fecha.toLocaleDateString() + ' ' + fecha.toLocaleTimeString();
+  }
+
+  function actualizarCarrito() {
+    listaCarrito.innerHTML = '';
+    let totalCantidad = 0;
+    let totalPago = 0;
+
+    for (const producto in carrito) {
+      const item = carrito[producto];
+      totalCantidad += item.cantidad;
+      totalPago += item.subtotal;
+
+      const li = document.createElement('li');
+      li.textContent = `${producto} x${item.cantidad} - $${item.subtotal.toFixed(2)}`;
+      listaCarrito.appendChild(li);
+    }
+
+    totalItems.textContent = totalCantidad;
+    totalPrecio.textContent = totalPago.toFixed(2);
+    idCompra.textContent = generarIdCompra();
+    fechaPedido.textContent = obtenerFechaActual();
+  }
+
+btnComprar.addEventListener('click', () => {
+  if (Object.keys(carrito).length === 0) {
+    alert('Tu carrito está vacío.');
+    return;
+  }
+
+  const confirmacion = confirm("¿Deseas finalizar la compra?");
+  if (confirmacion) {
+    const productos = Object.entries(carrito).map(([nombre, info]) => ({
+      nombre: nombre,
+      cantidad: info.cantidad,
+      subtotal: info.subtotal
+    }));
+
+    const datosCompra = {
+      id_compra: generarIdCompra(),
+      fecha: new Date().toISOString().slice(0, 19).replace('T', ' '),
+      productos: productos
+    };
+
+    fetch('guardar_compra.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datosCompra)
+    })
+    .then(res => res.json())
+    .then(respuesta => {
+      if (respuesta.estado === "ok") {
+        alert("¡Gracias por tu compra!\n" +
+              "ID: " + datosCompra.id_compra + "\n" +
+              "Fecha: " + datosCompra.fecha);
+        carrito = {};
+        actualizarCarrito();
+        idCompra.textContent = "N/A";
+        fechaPedido.textContent = "N/A";
+      } else {
+        alert("Error al guardar la compra: " + respuesta.mensaje);
+      }
+    })
+    .catch(error => {
+      alert("Error en la conexión con el servidor.");
+      console.error(error);
+    });
+  }
+});
+
+</script>
+  <footer>
+    <div class="footer-contenido">
+      <div class="footer-texto">
+        <p>Todos los derechos reservados</p>
+        <p>@cafeteriaaroma</p>
+        <p>Jonathan Jatsbany Nicolás Arzate<br>Juan Carlos Esquivel Rojas</p>
+      </div>
+      <div class="redes">
+        <a href="https://wa.me/5210000000000" target="_blank">
+          <img src="piewatsap.jpg" alt="WhatsApp" class="img-footer">
+        </a>
+        <a href="https://www.facebook.com/share/1Ami3KjsKd/" target="_blank">
+          <img src="face.jpg" alt="Facebook" class="img-footer">
+        </a>
+        <a href="https://www.instagram.com/nicolas_j07j" target="_blank">
+          <img src="instas.jpg" alt="Instagram" class="img-footer">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  
+</body>
+</html>
